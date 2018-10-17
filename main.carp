@@ -1,0 +1,13 @@
+(definterface open (Fn [a] b))
+(definterface close (Fn [a] ()))
+
+(defmacro using [name args body]
+  (list 'let-do (array name (list 'open args))
+    body
+    (list 'close name)))
+
+(defmacro using-do [name arg :rest body]
+  (cons-last
+    (list 'close name)
+    (cons 'let-do
+      (cons (array name (list 'open arg)) body))))

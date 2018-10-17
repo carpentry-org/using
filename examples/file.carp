@@ -1,0 +1,24 @@
+(load "main.carp")
+
+(defmodule File
+  (defn open [fname]
+    (IO.fopen fname "w+"))
+
+  (defn close [file]
+    (IO.fclose file))
+
+  (defn write [file string]
+    (let-do [ln (length string)]
+      (IO.fwrite (cstr string) 1 ln file)
+      (IO.rewind file)))
+
+  (defn read [file len]
+    (let-do [s (String.allocate len (Char.from-int 0))]
+      (ignore (IO.fread (cstr &s) 1 len file))
+      s))
+)
+
+(defn main []
+  (using-do f "example"
+    (File.write f "hi")
+    (IO.println &(File.read f 2))))
