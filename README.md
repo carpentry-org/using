@@ -6,7 +6,7 @@ Context managers for Carp. An experiment.
 
 You can include `using` in your project like this:
 
-````clojure
+```clojure
 (load git@github.com:carpentry-org/using@0.0.1")
 ```
 
@@ -18,7 +18,7 @@ the unit type.
 
 If that function is defined, you can do things like that:
 
-```
+```clojure
 (using (File.open "example") f
   (IO.println &(File.read-all &f)))
 ```
