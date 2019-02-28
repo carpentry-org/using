@@ -1,10 +1,5 @@
-(load "git@github.com:hellerve/file.git@master")
 (load "main.carp")
-
-(defmodule Int
-  (sig close (Fn [Int] ()))
-  (defn close [i]
-    ()))
+(load "git@github.com:carpentry-org/file.git@master")
 
 (defn main []
   (using-do (File.open "example") f
