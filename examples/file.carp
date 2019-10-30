@@ -2,7 +2,8 @@
 (load "git@github.com:carpentry-org/file.git@master")
 
 (defn main []
-  (using-do (File.open "example") f
-    (File.write &f "hi")
-    (File.rewind &f)
-    (IO.println &(File.read &f 2))))
+  (println*
+    &(using-do (Result.unsafe-from-success (File.open "example")) f
+      (ignore (File.write &f "hi"))
+      (File.rewind &f)
+      (File.read &f 2))))
