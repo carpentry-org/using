@@ -1,6 +1,8 @@
 (load "main.carp")
 (load "git@github.com:carpentry-org/file.git@master")
 
+(implements close File.close)
+
 (defn main []
   (println*
     &(using-do (Result.unsafe-from-success (File.open "example")) f
