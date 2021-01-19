@@ -7,7 +7,7 @@ Context managers for Carp. An experiment.
 You can include `using` in your project like this:
 
 ```clojure
-(load git@github.com:carpentry-org/using@0.0.2")
+(load "git@github.com:carpentry-org/using@0.0.2")
 ```
 
 ## Usage
