@@ -1,13 +1,8 @@
 (definterface close (Fn [a] ()))
 
 (defmacro using [f name body]
-  (let [x (gensym)]
-    (list 'let-do (array name f x body)
-      (list 'close name)
-      x)))
+  (let [x (gensym)] (list 'let-do (array name f x body) (list 'close name) x)))
 
 (defmacro using-do [f name :rest body]
   (let [x (gensym)]
-    (list 'let-do (array name f x (cons 'do body))
-      (list 'close name)
-      x)))
+    (list 'let-do (array name f x (cons 'do body)) (list 'close name) x)))
