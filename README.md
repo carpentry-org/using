@@ -20,7 +20,7 @@ If that function is defined, you can do things like that:
 ```clojure
 (println*
   &(using (Result.unsafe-from-success (File.open "example")) f
-    &(File.read-all &f)))
+    (the (Result String String) (File.read-all &f))))
 ```
 
 The file that was opened will be automatically closed once the scope is exited.

@@ -1,11 +1,11 @@
 (load "main.carp")
-(load "git@github.com:carpentry-org/file.git@master")
+(load "git@github.com:carpentry-org/file.git@0.3.0")
 
 (implements close File.close)
 
 (defn main []
   (println*
-    &(using-do (Result.unsafe-from-success (File.open "example")) f
+    &(using-do (Result.unsafe-from-success (File.open-with "example" "w+")) f
       (ignore (File.write &f "hi"))
       (File.rewind &f)
-      (File.read &f 2))))
+      (the (Result String String) (File.read &f 2)))))
